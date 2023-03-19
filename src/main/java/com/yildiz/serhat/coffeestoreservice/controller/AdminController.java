@@ -2,7 +2,6 @@ package com.yildiz.serhat.coffeestoreservice.controller;
 
 import com.yildiz.serhat.coffeestoreservice.controller.model.request.ProductCreateRequestDTO;
 import com.yildiz.serhat.coffeestoreservice.controller.model.request.ProductUpdateRequestDTO;
-import com.yildiz.serhat.coffeestoreservice.service.OrderService;
 import com.yildiz.serhat.coffeestoreservice.service.ProductService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -25,7 +24,6 @@ import java.util.Map;
 public class AdminController {
 
     private final ProductService productService;
-    private final OrderService orderService;
 
     @PostMapping
     //@PreAuthorize("hasRole('ADMIN')")

@@ -26,10 +26,10 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void register(User user) {
-        userRepository.findByUsername(user.getUsername()).ifPresent(u -> {
-            throw new UserAlreadyExistsException(u.getUsername());
+        userRepository.findByEmail(user.getEmail()).ifPresent(u -> {
+            throw new UserAlreadyExistsException(u.getEmail());
         });
-        user.setToken(getJTWToken(user.getUsername()));
+        user.setToken(getJTWToken(user.getEmail()));
         userRepository.save(user);
         log.info("User successfully created:{} ", user.getUsername());
     }
@@ -46,7 +46,7 @@ public class UserServiceImpl implements UserService {
                 .orElseThrow(() -> new UserNotFoundException("User Not Found"));
     }
 
-    private String getJTWToken(String username) {
+    private String getJTWToken(String email) {
         String secretKey = "mySecretKey";
         List<GrantedAuthority> grantedAuthorities = AuthorityUtils
                 .commaSeparatedStringToAuthorityList("ROLE_USER");
@@ -54,7 +54,7 @@ public class UserServiceImpl implements UserService {
         String token = Jwts
                 .builder()
                 .setId("coffeeStoreAppJWT")
-                .setSubject(username)
+                .setSubject(email)
                 .claim("authorities",
                         grantedAuthorities.stream()
                                 .map(GrantedAuthority::getAuthority)

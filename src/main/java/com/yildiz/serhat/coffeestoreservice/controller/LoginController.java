@@ -5,6 +5,7 @@ import com.yildiz.serhat.coffeestoreservice.domain.entity.User;
 import com.yildiz.serhat.coffeestoreservice.service.UserService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -28,16 +29,16 @@ public class LoginController {
     @ResponseBody
     public ResponseEntity<?> registerCustomer(@Valid @RequestBody User user) {
         userService.register(user);
-        return ResponseEntity.ok(ResponseDTO.builder().success(true).message("User Registered.")
+        return new ResponseEntity<>(ResponseDTO.builder().success(true).message("User Registered.")
                 .object(user.getEmail())
-                .build());
+                .build(), HttpStatus.CREATED);
     }
 
     @PostMapping("/login")
-    public ResponseDTO<Object> login(@RequestParam("email") String email) {
-        return ResponseDTO.builder()
+    public ResponseEntity<?> login(@RequestParam("email") String email) {
+        return new ResponseEntity<>(ResponseDTO.builder()
                 .object(userService.getUserToken(email))
                 .success(true)
-                .build();
+                .build(), HttpStatus.OK);
     }
 }
