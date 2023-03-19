@@ -36,7 +36,7 @@ public class BasketController {
     public ResponseEntity<Basket> removeItem(@PathVariable Long id,
                                              @PathVariable int quantity,
                                              @RequestHeader(name = "Authorization") String token) {
-        return new ResponseEntity<>(basketService.removeItemFromBasket(id,quantity, token), HttpStatus.OK);
+        return new ResponseEntity<>(basketService.removeItemFromBasket(id, quantity, token), HttpStatus.OK);
     }
 
     @GetMapping("/items")

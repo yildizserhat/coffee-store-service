@@ -2,7 +2,6 @@ package com.yildiz.serhat.coffeestoreservice.service;
 
 import com.yildiz.serhat.coffeestoreservice.controller.model.request.ProductCreateRequestDTO;
 import com.yildiz.serhat.coffeestoreservice.controller.model.request.ProductUpdateRequestDTO;
-import com.yildiz.serhat.coffeestoreservice.controller.model.response.ReportResponseDTO;
 import com.yildiz.serhat.coffeestoreservice.domain.entity.Product;
 
 import java.util.Map;

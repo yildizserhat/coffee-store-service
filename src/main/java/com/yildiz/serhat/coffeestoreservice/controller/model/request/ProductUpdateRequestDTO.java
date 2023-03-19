@@ -2,7 +2,6 @@ package com.yildiz.serhat.coffeestoreservice.controller.model.request;
 
 import com.yildiz.serhat.coffeestoreservice.domain.entity.ProductType;
 
-
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.validation.constraints.DecimalMin;

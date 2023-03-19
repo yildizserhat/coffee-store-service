@@ -2,7 +2,6 @@ package com.yildiz.serhat.coffeestoreservice.controller.model.request;
 
 import com.yildiz.serhat.coffeestoreservice.domain.entity.ProductType;
 
-
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.validation.constraints.DecimalMin;
@@ -18,4 +17,5 @@ public record ProductCreateRequestDTO(
         ProductType type,
         @DecimalMin(value = "0.0", message = "Product Price must be greater than 0.")
         BigDecimal price
-) { }
+) {
+}

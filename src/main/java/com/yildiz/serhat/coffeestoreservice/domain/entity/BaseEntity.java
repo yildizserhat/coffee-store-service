@@ -7,7 +7,6 @@ import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.Column;
 import javax.persistence.MappedSuperclass;
-import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.time.OffsetDateTime;
 

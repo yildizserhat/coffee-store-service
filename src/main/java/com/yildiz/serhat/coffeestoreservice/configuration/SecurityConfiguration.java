@@ -18,12 +18,12 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
 
         http.csrf().disable()
-                .addFilterAfter(new JWTAuthorizationFilter(), UsernamePasswordAuthenticationFilter.class).antMatcher("/");
-                //.authorizeRequests()
-               // .antMatchers(HttpMethod.POST, "/authenticate/**")
-                //.permitAll()
-                //.antMatchers(HttpMethod.GET, "/").permitAll()
-                //anyRequest().authenticated();
+                .addFilterAfter(new JWTAuthorizationFilter(), UsernamePasswordAuthenticationFilter.class)
+                .authorizeRequests()
+                .antMatchers(HttpMethod.POST, "/authenticate/**")
+                .permitAll()
+                .antMatchers(HttpMethod.GET, "/").permitAll()
+                .anyRequest().authenticated();
     }
 
     @Bean
