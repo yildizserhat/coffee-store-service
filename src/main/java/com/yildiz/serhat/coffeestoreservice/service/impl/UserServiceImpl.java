@@ -26,8 +26,8 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void register(User user) {
-        userRepository.findByEmail(user.getEmail()).ifPresent(u -> {
-            throw new UserAlreadyExistsException(u.getEmail());
+        userRepository.findByEmail(user.getEmail()).ifPresent(users -> {
+            throw new UserAlreadyExistsException(users.getEmail());
         });
         user.setToken(getJTWToken(user.getEmail()));
         userRepository.save(user);

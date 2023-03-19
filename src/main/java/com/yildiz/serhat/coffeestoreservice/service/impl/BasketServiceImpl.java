@@ -5,7 +5,6 @@ import com.yildiz.serhat.coffeestoreservice.domain.entity.Basket;
 import com.yildiz.serhat.coffeestoreservice.domain.entity.BasketItem;
 import com.yildiz.serhat.coffeestoreservice.domain.entity.Product;
 import com.yildiz.serhat.coffeestoreservice.domain.entity.User;
-import com.yildiz.serhat.coffeestoreservice.repository.BasketItemRepository;
 import com.yildiz.serhat.coffeestoreservice.repository.BasketRepository;
 import com.yildiz.serhat.coffeestoreservice.service.BasketService;
 import com.yildiz.serhat.coffeestoreservice.service.ProductService;
@@ -32,8 +31,6 @@ public class BasketServiceImpl implements BasketService {
 
     private final BasketRepository basketRepository;
 
-    private final BasketItemRepository basketItemRepository;
-
     @Override
     @Transactional
     public Basket createItemInBasket(CreateItemRequestDTO itemRequestDTO, String token) {
@@ -56,7 +53,7 @@ public class BasketServiceImpl implements BasketService {
         Basket basket = getBasket(preparedToken);
 
         basket.getBasketItems().stream()
-                .filter(y -> y.getId() == id)
+                .filter(basketItem -> basketItem.getId() == id)
                 .findAny()
                 .ifPresent(item -> {
                     basket.removeItemFromBasket(item, quantity);

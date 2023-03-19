@@ -79,7 +79,7 @@ class BasketControllerTest {
     @Test
     @SneakyThrows
     public void shouldRemoveItemFromBasket() {
-        String token = getToken("remove@test.com");
+        String token = getToken("removeee@test.com");
         mockMvc.perform(delete("/v1/api/basket/items/{id}/{quantity}", 1L, 1)
                         .contentType(MediaType.APPLICATION_JSON)
                         .header("Authorization", "Bearer " + token))

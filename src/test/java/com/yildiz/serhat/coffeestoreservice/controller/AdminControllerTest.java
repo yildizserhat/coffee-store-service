@@ -79,7 +79,7 @@ public class AdminControllerTest {
     @Test
     @SneakyThrows
     public void shouldCreateProductAndReturnsCreated() {
-        String token = getToken("createTest@test.com");
+        String token = getToken("createeeTest@test.com");
         mockMvc.perform(post("/v1/api/admin/products")
                         .contentType(MediaType.APPLICATION_JSON)
                         .header("Authorization", "Bearer " + token)
